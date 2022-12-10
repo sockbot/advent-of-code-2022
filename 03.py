@@ -326,7 +326,18 @@ def part1(input):
     return result
 
 def part2(input):
-    pass
+    result = 0
+    while input:
+        group = input[:3]
+        input = input[3:]
+        dupl = set(group[0]) & set(group[1]) & set(group[2])
+        char = dupl.pop()
+        # print(char)
+        if char.isupper():
+            result += ord(char) - ord("A") + 27
+        else:
+            result += ord(char) - ord("a") + 1
+    return result
 
 
 print(part1(lines))
